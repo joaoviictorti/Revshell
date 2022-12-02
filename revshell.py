@@ -2,18 +2,17 @@ import argparse
 from urllib.parse import quote
 from base64 import b64encode
 import binascii
+from argparse import BooleanOptionalAction, RawTextHelpFormatter
 
 def banner():
     return """
- (                                       
- )\ )                    )       (   (   
-(()/(   (    )        ( /(    (  )\  )\  
- /(_)) ))\  /((   (   )\())  ))\((_)((_) 
-(_))  /((_)(_))\  )\ ((_)\  /((_)_   _   
-| _ \(_))  _)((_)((_)| |(_)(_)) | | | |  
-|   // -_) \ V / (_-<| ' \ / -_)| | | |  
-|_|_\\___|  \_/  /__/|_||_|\___||_| |_|  
+    ____                     __           __ __
+   / __ \ ___  _   __ _____ / /_   ___   / // /
+  / /_/ // _ \| | / // ___// __ \ / _ \ / // / 
+ / _, _//  __/| |/ /(__  )/ / / //  __// // /  
+/_/ |_| \___/ |___//____//_/ /_/ \___//_//_/   
                         Autor: João Victor
+                        Version: 3.0
                                             
 """
 
@@ -120,7 +119,7 @@ class Golang(Encode):
 
 class Argumentos():
     global args
-    parser = argparse.ArgumentParser(prog=banner(),usage="python3 revshell.py -ip 192.168.4.80 -port 4444 -payload bash -encode urlencode")
+    parser = argparse.ArgumentParser(prog=banner(),usage="python3 revshell.py -ip 192.168.4.80 -port 4444 -payload bash -encode urlencode",formatter_class=RawTextHelpFormatter)
     parser.add_argument('--version',action='version', version='revshell 2.0')
     parser.add_argument("-ip",type=str, dest="ip",action="store",help="Insert ip",required=True)
     parser.add_argument("-port",type=str,dest="porta",action="store",help="Insert port",required=True)
